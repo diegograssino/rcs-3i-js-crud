@@ -23,11 +23,11 @@ const newArticleModalMessage =
 const results =
   document.getElementById('results');
 
-const search = document.getElementById(
+const searchInput = document.getElementById(
   'searchInput'
 );
 
-const searchButton = document
+const search = document
   .getElementById('search')
   .addEventListener('click', () =>
     updateResults()
@@ -56,8 +56,7 @@ const newArticle = () => {
 
 const updateResults = () => {
   results.innerHTML = '';
-  const input = search.value;
-  console.log(input);
+  const input = searchInput.value;
 
   const filtered = products.filter(p =>
     p.name
@@ -84,22 +83,26 @@ const updateResults = () => {
       </button>
       <button
         type="button"
-        class="btn btn-danger rounded-0" onclick="delArticle(${p.id})"
+        class="btn btn-danger rounded-0" id="${p.id}"
       >
         <i class="fa-solid fa-trash-can text-white"></i>
       </button>
     </div>
   </div>`;
     results.appendChild(card);
+    const button = document
+      .getElementById(p.id)
+      .addEventListener('click', () =>
+        delArticle(p)
+      );
   });
 };
 
 // Funcion para borrar productos (Sale mal)
-const delArticle = idProduct => {
-  // console.log(product);
-  // const index = products.indexOf(product);
-  // console.log(index);
-  const index = products[idProduct - 1];
+const delArticle = product => {
+  console.log(product);
+  const index = products.indexOf(product);
+  console.log(index);
   products.splice(index, 1);
   localStorage.setItem(
     'products',
