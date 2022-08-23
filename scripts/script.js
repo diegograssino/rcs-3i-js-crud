@@ -27,6 +27,16 @@ const searchInput = document.getElementById(
   'searchInput'
 );
 
+// Modal
+const editModal =
+  document.getElementById('editModal');
+editModal.addEventListener(
+  'show.bs.modal',
+  event => {
+    console.log(event);
+  }
+);
+
 const search = document
   .getElementById('search')
   .addEventListener('click', () =>
@@ -77,13 +87,15 @@ const updateResults = () => {
     <div>
       <button
         type="button"
-        class="btn btn-warning rounded-0"
+        class="btn btn-warning rounded-0" data-bs-toggle="modal"
+        data-bs-target="#editModal"
+				id="edit${p.id}"
       >
         <i class="fa-solid fa-pen text-white"></i>
       </button>
       <button
         type="button"
-        class="btn btn-danger rounded-0" id="${p.id}"
+        class="btn btn-danger rounded-0" id="del${p.id}"
       >
         <i class="fa-solid fa-trash-can text-white"></i>
       </button>
@@ -91,24 +103,44 @@ const updateResults = () => {
   </div>`;
     results.appendChild(card);
     const button = document
-      .getElementById(p.id)
+      .getElementById(`del${p.id}`)
       .addEventListener('click', () =>
         delArticle(p)
+      );
+    const button2 = document
+      .getElementById(`edit${p.id}`)
+      .addEventListener('click', () =>
+        editArticle(p)
       );
   });
 };
 
-// Funcion para borrar productos (Sale mal)
+// Funcion para borrar productos
 const delArticle = product => {
-  console.log(product);
   const index = products.indexOf(product);
-  console.log(index);
   products.splice(index, 1);
   localStorage.setItem(
     'products',
     JSON.stringify(products)
   );
   updateResults();
+};
+
+// Selecciono los input del modal
+const editId = document.getElementById('edit-id');
+const editName =
+  document.getElementById('edit-name');
+const editPrice =
+  document.getElementById('edit-price');
+
+// Función para editar desde el modal
+
+const editArticle = product => {
+  // Completo el modal
+  editId.value = product.id;
+  editName.value = product.name;
+  editPrice.value = product.price;
+  // Hacer exactamente lo mismo que con newArticle
 };
 
 updateResults();

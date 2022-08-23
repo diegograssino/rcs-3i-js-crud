@@ -177,6 +177,93 @@
         </div>
       </div>
     </div>
+    <!-- Edit modal -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="newArticleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+            >
+              Edit Article
+            </h5>
+            <button
+              type="button"
+              class="btn-close rounded-0"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label
+                for="edit-id"
+                class="form-label"
+                >ID</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="edit-id"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                for="edit-name"
+                class="form-label"
+                >Name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="edit-name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                for="edit-price"
+                class="form-label"
+                >Price</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="edit-price"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div
+              id="newArticleModalMessage"
+            ></div>
+            <button
+              type="button"
+              class="btn btn-secondary rounded-0"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              id="editButton"
+              type="button"
+              class="btn btn-success rounded-0"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
